@@ -55,5 +55,6 @@ namespace memtech.windowsphone.ViewModels
         public string Text { get; set; }
         public string FromUser { get; set; }
         public string IdStr { get; set; }
+        public string ProfileImageUrl { get; set; }
     }
 }

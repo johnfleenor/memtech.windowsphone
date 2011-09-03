@@ -25,7 +25,11 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,10">
-                                    <TextBlock MouseLeftButtonUp="TwitterUser_MouseLeftButtonUp" Text="{Binding FromUser}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
+                                    <StackPanel Orientation="Horizontal" >                                        
+                                        <Image Width="32" Height="32" Source="{Binding ProfileImageUrl}" />
+                                        <TextBlock MouseLeftButtonUp="TwitterUser_MouseLeftButtonUp" Text="{Binding FromUser}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
+                                    </StackPanel>
+                                    
                                     <TextBlock MouseLeftButtonUp="TwitterTweet_MouseLeftButtonUp" Text="{Binding Text}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" />
                                 </StackPanel>
                             </DataTemplate>
