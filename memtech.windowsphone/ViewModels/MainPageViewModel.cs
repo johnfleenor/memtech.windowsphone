@@ -19,7 +19,7 @@ using System.ComponentModel;
 
 namespace memtech.windowsphone.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : ViewModelBase
     {
         public ObservableCollection<NewsItem> NewsItems { get; set; }
         public ObservableCollection<UpcomingEvent> UpcomingEvents { get; set; }
@@ -34,8 +34,11 @@ namespace memtech.windowsphone.ViewModels
             }
             private set
             {
-                _showNoNewsMessage = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("ShowNoNewsMessage"));
+                if (_showNoNewsMessage != value)
+                {
+                    _showNoNewsMessage = value;
+                    OnPropertyChanged("ShowNoNewsMessage");
+                }
             }
         }
 
@@ -48,8 +51,11 @@ namespace memtech.windowsphone.ViewModels
             }
             private set
             {
-                _showNoEventsMessage = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("ShowNoEventsMessage"));
+                if (_showNoEventsMessage != value)
+                {
+                    _showNoEventsMessage = value;
+                    OnPropertyChanged("ShowNoEventsMessage");
+                }
             }
         }
 
@@ -143,14 +149,7 @@ namespace memtech.windowsphone.ViewModels
             // it should also allow us to push our own custom news down (maybe with push notificatons?)
             webClient.OpenReadAsync(new Uri("http://www.memphisdev.com/feeds/posts/default"));
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, e);
-        }
+       
     }
 
     public class MenuItem
